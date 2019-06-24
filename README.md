@@ -2,14 +2,18 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
-- [CSS From Zero To Hero](#css-from-zero-to-hero)
-  - [Flex布局](#flex%E5%B8%83%E5%B1%80)
-    - [Flex解决的问题](#flex%E8%A7%A3%E5%86%B3%E7%9A%84%E9%97%AE%E9%A2%98)
-    - [Flex的核心思想](#flex%E7%9A%84%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3)
-    - [Flex与常规布局的差别](#flex%E4%B8%8E%E5%B8%B8%E8%A7%84%E5%B8%83%E5%B1%80%E7%9A%84%E5%B7%AE%E5%88%AB)
-    - [Flex应用场景](#flex%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF)
-    - [Flex基本概念](#flex%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5)
-    - [Flex容器相关属性](#flex%E5%AE%B9%E5%99%A8%E7%9B%B8%E5%85%B3%E5%B1%9E%E6%80%A7)
+- [CSS From Zero To Hero](#CSS-From-Zero-To-Hero)
+  - [Flex布局](#Flex%E5%B8%83%E5%B1%80)
+    - [Flex解决的问题](#Flex%E8%A7%A3%E5%86%B3%E7%9A%84%E9%97%AE%E9%A2%98)
+    - [Flex的核心思想](#Flex%E7%9A%84%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3)
+    - [Flex与常规布局的差别](#Flex%E4%B8%8E%E5%B8%B8%E8%A7%84%E5%B8%83%E5%B1%80%E7%9A%84%E5%B7%AE%E5%88%AB)
+    - [Flex应用场景](#Flex%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF)
+    - [Flex基本概念](#Flex%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5)
+    - [Flex容器属性](#Flex%E5%AE%B9%E5%99%A8%E5%B1%9E%E6%80%A7)
+    - [Flex项目属性](#Flex%E9%A1%B9%E7%9B%AE%E5%B1%9E%E6%80%A7)
+  - [Flex demo](#Flex-demo)
+    - [水平垂直居中](#%E6%B0%B4%E5%B9%B3%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD)
+    - [响应式导航栏](#%E5%93%8D%E5%BA%94%E5%BC%8F%E5%AF%BC%E8%88%AA%E6%A0%8F)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -35,18 +39,18 @@
 
 ### Flex基本概念
 
-- **容器和项**:Flex容器是包含Flex项目的块，直接包含在Flex块内的元素都是Flex项
+- **容器和项**:Flex容器是包含Flex项目的块，直接包含在Flex块内的元素都是Flex项。
 ![container](https://css-tricks.com/wp-content/uploads/2018/10/01-container.svg)
 ![items](https://css-tricks.com/wp-content/uploads/2018/10/02-items.svg)
 
 - **Flex布局方向**:常规布局方向是基于块级和内联，而Flex则是基于`flex-flow`方向。
 ![flex](https://css-tricks.com/wp-content/uploads/2018/11/00-basic-terminology.svg)
 
-- **图中main指的是主轴和主尺寸，cross指的是副轴和副尺寸**
+- **图中main指的是主轴的相关属性，cross指的是交叉轴（垂直于主轴）的相关属性。注意，主轴并不一定是交叉向的，这取决与`flex-direction`的属性。**
 
-- Flex项目会沿着主轴（从主轴开始到主轴结束）或横轴（从主轴开始到横轴结束）进行布置。
+- Flex项目会沿着主轴或交叉轴进行布置。
 
-### Flex容器相关属性
+### Flex容器属性
 
 - `display:flex`, 定义一个flex容器，为所有的直接子元素启用flex上下文。
 
@@ -56,16 +60,46 @@
 - `flex-wrap: nowrap(default) | wrap | wrap | wrap-reverse`，默认情况下，felx项目会放在一行上，修改该属性可以让项目换行排列。
 ![flex-wrap](https://css-tricks.com/wp-content/uploads/2018/10/flex-wrap.svg)
 
-- `flex-flow: <flex-direction> || <flex-wrap>`,是两个属性的简写，一起定义容器的主轴和横轴，默认值是`row nowrap`
+- `flex-flow: <flex-direction> || <flex-wrap>`,是两个属性的简写，一起定义容器的主轴和交叉轴，默认值是`row nowrap`
 
-- `justify-content: flex-start(default) | flex-end | center | space-between | space-around | space-evenly`，定义了主轴方向上flex项目的对齐方式。
+- `justify-content: flex-start(default) | flex-end | center | space-between | space-around | space-evenly`，定义了主轴方向上flex项目的对齐方式。注意：space-around和space-evenly的区别在于主轴起始和结束时的间距，around是两个相邻flex项间距的一半，evenly和flex项间距一样。
 ![justify-content](https://css-tricks.com/wp-content/uploads/2018/10/justify-content.svg)
 
-- `align-items: flex-start | flex-end | center | stretch | baseline`，定义了横轴（垂直于主轴）方向上flex项目的对齐方式。
+- `align-items: flex-start | flex-end | center | stretch(default) | baseline`，定义了交叉轴方向上flex项目的对齐方式。
 ![align-items](https://css-tricks.com/wp-content/uploads/2018/10/align-items.svg)
 
-- `align-content: flex-start | flex-end | center | stretch | space-between | space-around`，定义了当横轴有多余空间时，flex容器的行对齐方式。当flex项目只有一行的时候，不生效。
+- `align-content: flex-start | flex-end | center | stretch(default) | space-between | space-around`，定义了当交叉轴有多余空间时，flex容器的行对齐方式。当flex项目只有一行的时候，不生效。
 ![align-conter](https://css-tricks.com/wp-content/uploads/2018/10/align-content.svg)
 
-- 
+### Flex项目属性
+
+- `order: <integer>(default 0)`，默认情况下，flex项目按源顺序排列，`order`属性可以控制他们在容器中出现的顺序。
+![order](https://css-tricks.com/wp-content/uploads/2018/10/order.svg)
+
+- `flex-grow: <number>(default 0,negative numbers are invalid)`，定义了flex项目在必要时的伸展能力，接受一个作为比例的无单位值，指定项目在flex容器中应该占用多少可用空间。如果所有项目都设置为1，那么容器剩余的空间会平均分配给所有子元素，如果其中一个子元素的值为2，那么它占用的空间是其他元素空的两倍。
+![flex-grow](https://css-tricks.com/wp-content/uploads/2018/10/flex-grow.svg)
+
+- `flex-shrink: <number>(defalut 1)`，定义了flex项目在必要时的收缩能力。
+
+- `flex-basis: <length> | auto(default) | content`，定义了flex项目在主轴方向上的初始大小。`length`可以是一个长度单位。`auto`关键字的关键字意思是"查看我的宽度或高度属性"。`content`关键字的意思是"根据项目的内容调整大小"，但支持不好，不建议使用。如果设置为0，则不考虑内容周围的额外空间。如果设置为auto，则根据其flex-grow值分配额外空间。
+![flex-basic](https://www.w3.org/TR/css-flexbox-1/images/rel-vs-abs-flex.svg)
+
+- `flex: none | [<'flex-grow'> <flex-shrink>? || <flex-basic> ]`,这是三个属性组合的简写。其中只有flex-grow是必须的。三个属性对应的默认值是 0 1 auto.建议使用这种简写属性
+
+- `align-self: auto | flex-start | flex-end | center | baseline | stretch`，flex项目可以通过该属性对`align-item`属性进行重写。
+![align-self](https://css-tricks.com/wp-content/uploads/2018/10/align-self.svg)
+
+- **注意：`float`，`clear`, `vertical-align`对flex项目无效**
+
+## Flex demo
+
+### 水平垂直居中
+
+- 原理：flex项目设置`maring: auto`会吸收额外的空间。因此设置auto的外边距会让flex项目完美的定位在两个轴的中心。
+
+
+### 响应式导航栏
+
+- 原理：媒体查询对flex容器进行修改`justify-content`和`flex-direction`的值。
+
 
