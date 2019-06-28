@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>flex中的响应式栅格系统</title>
+  <style>
+    .wrapper {
+      display: flex;
+    }
+    .child {
+      flex: 1;
+      background: #ccc;
+      margin: 0px 10px;
+    }
+    .wrapper-2 {
+      display: flex;
+      margin-top: 10px;
+    }
+    .wrapper-2 .child-auto {
+      background: #ccc;
+      margin: 0px 10px;
+      flex: none;
+      width: 50%;
+    }
+    @media all and (max-width: 800px) {
+      .child {
+        flex: 1 100%;
+        margin-bottom: 10px;
+      }
+      .wrapper {
+        flex-flow: row wrap;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="child">1/2</div>
+    <div class="child">1/2</div>
+    <div class="child">高度充满，即使内容没有填满空间</div>
+    <div class="child">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mollis velit non gravida venenatis. Praesent consequat lectus purus, ut scelerisque velit condimentum eu. Maecenas sagittis ante ut turpis varius interdum. Quisque tellus ipsum, eleifend non ipsum id, suscipit ultricies neque.</div>
+  </div>
+  <div class="wrapper-2">
+    <div class="child-auto">1/2</div>
+    <div class="child">auto</div>
+    <div class="child">auto</div>
+    <div class="child">auto</div>
+  </div>
+</body>
+
+</html>
