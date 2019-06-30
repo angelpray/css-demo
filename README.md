@@ -16,9 +16,12 @@
     - [响应式导航栏](#%E5%93%8D%E5%BA%94%E5%BC%8F%E5%AF%BC%E8%88%AA%E6%A0%8F)
   - [圣杯布局](#%E5%9C%A3%E6%9D%AF%E5%B8%83%E5%B1%80)
     - [圣杯布局概念](#%E5%9C%A3%E6%9D%AF%E5%B8%83%E5%B1%80%E6%A6%82%E5%BF%B5)
+    - [DOM结构](#DOM%E7%BB%93%E6%9E%84)
     - [圣杯布局传统方式实现](#%E5%9C%A3%E6%9D%AF%E5%B8%83%E5%B1%80%E4%BC%A0%E7%BB%9F%E6%96%B9%E5%BC%8F%E5%AE%9E%E7%8E%B0)
   - [双飞翼布局](#%E5%8F%8C%E9%A3%9E%E7%BF%BC%E5%B8%83%E5%B1%80)
     - [双飞翼概念](#%E5%8F%8C%E9%A3%9E%E7%BF%BC%E6%A6%82%E5%BF%B5)
+    - [区别于圣杯布局](#%E5%8C%BA%E5%88%AB%E4%BA%8E%E5%9C%A3%E6%9D%AF%E5%B8%83%E5%B1%80)
+    - [DOM结构](#DOM%E7%BB%93%E6%9E%84-1)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -116,6 +119,16 @@
 3. 允许三列中的任意一列成为最高列
 4. 只需要使用一个额外的`div`标签
 
+### DOM结构
+
+```html
+<div class="container">
+  <div class="column" id="center">主体部分</div>
+  <div class="column" id="left">左边内容</div>
+  <div class="column" id="right">右边内容</div>
+</div>
+```
+
 ### 圣杯布局传统方式实现
 
 1. `container`类容器预留左右内边距
@@ -123,13 +136,33 @@
 3. `center`类主要内容的宽度设置为100%
 4. `left`左边内容的负左外边距设置为-100%
 5. `left`左边内容`position`为`relative`,将其`left`设置为相应的宽度
-6. `right`右边内容的负右边距设置为-100%
+6. `right`右边内容的负右边距设置为相应的宽度
+
+![holy grail](https://upload-images.jianshu.io/upload_images/9397803-e964c6f980b5da16.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/540/format/webp)
 
 ## 双飞翼布局
 
-
-
-
 ### 双飞翼概念
 
-- 
+1. **两侧宽度固定，中间宽度自适应。**
+2. 中间部分在DOM结构上优先，以便先渲染。
+3. 允许三列中的任意一列成为最高列
+4. 只需要使用一个额外的`div`标签
+
+### 区别于圣杯布局
+
+- DOM结构的区别：用`container`包裹住`center`，另外将`column`类移动到`container`类中。
+
+- CSS区别：让`container`宽度为100%，让`center`预留出左右内容宽度，让右内容的负外边距为相应宽度。
+
+### DOM结构
+
+```html
+<div class="container column">
+  <div id="center">
+    主体内容
+  </div>
+</div>
+<div class="column" id="left">左边内容</div>
+<div class="column" id="right">右边内容</div>
+```

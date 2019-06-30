@@ -2,11 +2,10 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>圣杯布局 </title>
+    <title>双飞翼布局</title>
     <style>
       body {
-        min-width: 566px;
-        /* 2x左内边距 + 右内边距 + body的外边距 */
+        min-width: 500px;
       }
       * {
         box-sizing: border-box;
@@ -22,29 +21,25 @@
         clear: both;
       }
       .container {
-        padding-left: 200px;
-        padding-right: 150px;
+        width: 100%;
       }
       .column {
         float: left;
-        padding-top: 50px;
-        padding-bottom: 50px;
       }
       #left {
         width: 200px;
         background: violet;
         margin-left: -100%;
-        position: relative;
-        left: -200px;
       }
       #right {
         width: 150px;
         background: indianred;
-        margin-right: -150px;
+        margin-left: -150px;
       }
       #center {
         background: mediumseagreen;
-        width: 100%;
+        margin-left: 200px;
+        margin-right: 150px;
       }
     </style>
   </head>
@@ -52,8 +47,8 @@
     <div class="header">
       #header
     </div>
-    <div class="container">
-      <div id="center" class="column">
+    <div class="container column">
+      <div id="center">
           最后提醒一下很多朋友可能会忽略的小细节：
           在#center中，包含了一条声明width: 100%，
           这是中间栏能够做到自适应的关键。
@@ -70,9 +65,9 @@
           来源：简书
           简书著作权归作者所有，任何形式的转载都请联系作者获得授权并注明出处。
       </div>
-      <div id="left" class="column">#left</div>
-      <div id="right" class="column">#right</div>
     </div>
+    <div id="left" class="column">#left</div>
+    <div id="right" class="column">#right</div>
     <div class="footer">
       #footer
     </div>
