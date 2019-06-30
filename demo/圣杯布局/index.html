@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>圣杯布局 </title>
+    <style>
+      body {
+        min-width: 800px;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      .header, .footer{
+        width: 100%;
+        background: tomato;
+        text-align: center;
+        font-size: 2rem;
+      }
+      .footer {
+        background: teal;
+        clear: both;
+      }
+      .container {
+        padding-left: 200px;
+        padding-right: 150px;
+      }
+      .column {
+        float: left;
+        padding-top: 50px;
+        padding-bottom: 50px;
+      }
+      #left {
+        width: 200px;
+        background: violet;
+        margin-left: -100%;
+        position: relative;
+        left: -200px;
+      }
+      #right {
+        width: 150px;
+        background: indianred;
+        margin-right: -150px;
+      }
+      #center {
+        background: mediumseagreen;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      #header
+    </div>
+    <div class="container">
+      <div id="center" class="column">
+          最后提醒一下很多朋友可能会忽略的小细节：
+          在#center中，包含了一条声明width: 100%，
+          这是中间栏能够做到自适应的关键。
+          可能会有朋友认为不需要设置这条声明，
+          因为觉得center在不设置宽度的情况下会默认将宽度设置为
+          父元素(container)的100%宽度。但需要注意到，
+          center是浮动元素，由于浮动具有包裹性，
+          在不显式设置宽度的情况下会自动“收缩”到内容的尺寸大小。
+          如果去掉width: 100%，则当中间栏不包含或者包含较少内容时，
+          整个布局会“崩掉”，而达不到这样的效果：
+
+          作者：放羊的小桃桃
+          链接：https://www.jianshu.com/p/81ef7e7094e8
+          来源：简书
+          简书著作权归作者所有，任何形式的转载都请联系作者获得授权并注明出处。
+      </div>
+      <div id="left" class="column">#left</div>
+      <div id="right" class="column">#right</div>
+    </div>
+    <div class="footer">
+      #footer
+    </div>
+  </body>
+</html>
