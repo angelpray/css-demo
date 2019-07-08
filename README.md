@@ -22,6 +22,13 @@
     - [双飞翼概念](#%E5%8F%8C%E9%A3%9E%E7%BF%BC%E6%A6%82%E5%BF%B5)
     - [区别于圣杯布局](#%E5%8C%BA%E5%88%AB%E4%BA%8E%E5%9C%A3%E6%9D%AF%E5%B8%83%E5%B1%80)
     - [DOM结构](#DOM%E7%BB%93%E6%9E%84-1)
+  - [CSS转换](#CSS%E8%BD%AC%E6%8D%A2)
+    - [概念](#%E6%A6%82%E5%BF%B5)
+    - [语法](#%E8%AF%AD%E6%B3%95)
+    - [2D转换](#2D%E8%BD%AC%E6%8D%A2)
+    - [3D转换](#3D%E8%BD%AC%E6%8D%A2)
+    - [过渡](#%E8%BF%87%E6%B8%A1)
+    - [动画](#%E5%8A%A8%E7%94%BB)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -166,3 +173,81 @@
 <div class="column" id="left">左边内容</div>
 <div class="column" id="right">右边内容</div>
 ```
+
+## CSS转换
+
+### 概念
+
+- Transform可以让一个坐标系统中变形。
+
+### 语法
+
+- `transfrom: none | 多个转换函数`，默认值是`none`。
+
+### 2D转换
+
+- rotate(),旋转,`transform: rotate(deg)`
+- translate(), 平移,`transform: translate(x, y),translateX(length),translateY(length)`
+- scale()，缩放, `transfrom: scaleX(number), scaleY(number), scale(x, y)`
+- skew()，斜切, `skewX(deg), skewY(deg), skew(x, y)`
+- matrix()，矩阵，混合转换
+
+### 3D转换
+
+![3d](https://image-static.segmentfault.com/268/357/268357742-5d1daf8d70482_articlex)
+
+- rotate3d(),`rotateX(),rotateY(),rotateZ(),rotate3d(x, y, z, angle)`
+- translate3d(),`translateZ(), translate3d(x, y, z)`
+- scale3d(), `scaleZ(), scale3d(x, y, z)`
+- matrix3d()
+- perspective()
+
+- transfrom-origin: x y z;，更改元素的转换中心
+
+### 过渡
+
+- 让CSS的属性值在一定的时间区间内平滑地过渡。
+
+- `transition-property: none | all(default) | property`,设置对象中参与过渡的属性
+
+- `transition-duration: time`，持续时间
+
+- `transition-timing-function: linear|ease|ease-in|ease-out|ease-in-out`，设置动画的贝塞尔曲线
+
+- `transition-delay`，设置对象延迟过渡的时间
+
+- `transition: property time function delay`，缩写
+
+### 动画
+
+- `animation-name: keyframename`,设置对象应用的动画名称
+
+- `animation-duration: time`，设置动画的持续时间
+
+- `animation-timing-function`,设置动画的贝塞尔曲线
+
+- `animation-delay`,设置动画的延迟时间
+
+- `animation-iteration-count: number| infinite`,设置动画的循环次数
+
+- `animation-direction： normal | reverse | alternate | alternate-reverse | initial | inherit`,设置对象在循环中是否反向运动。
+
+- `animation-fill-mode：none|forwards|backwards|both`，设置动画不播放的时候，元素的样式
+
+- `animation-play-state: pause|running`，设置动画暂停
+
+- `animation`,缩写，只有name和duration是必须的
+
+- `@keyframes`关键帧，通过逐步改变从一个CSS样式设定到另一个。
+```css
+@Keyframe animationName {
+  keyframes-selector {
+    css-styles;
+  }
+}
+```
+- `animationName`，是动画的名称。
+- `keyframes-selector: 0-100%, from, to`，动画的持续时间
+- `css-styles: 一个或多个合法的CSS样式`
+
+- `will-change`,触发GPU加速
