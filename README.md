@@ -29,6 +29,7 @@
     - [3D转换](#3D%E8%BD%AC%E6%8D%A2)
     - [过渡](#%E8%BF%87%E6%B8%A1)
     - [动画](#%E5%8A%A8%E7%94%BB)
+  - [X-UA-Compatible](#X-UA-Compatible)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -251,3 +252,7 @@
 - `css-styles: 一个或多个合法的CSS样式`
 
 - `will-change`,触发GPU加速
+
+## X-UA-Compatible
+
+- X-UA-Compatible是IE8的一个专有<meta>属性，它告诉IE8采用何种IE版本去渲染网页，在html的<head>标签中使用。可以在微软官方文档获取更多介绍。
